@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_glow/flutter_glow.dart';
 import 'package:weatherapp/model/weather_model.dart';
 import 'package:weatherapp/screens/home_page.dart';
 import 'package:weatherapp/screens/profile_page.dart';
-import 'package:weatherapp/widgets/extra_weather.dart';
 
 class CurrentWeather extends StatefulWidget {
   final Function() updateData;
@@ -111,11 +109,22 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                                     focusNode.requestFocus();
                                   },
                                   child: Text(
-                                    " " + city,
+                                    city + " ",
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                         fontSize: 30),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    searchBar = true;
+                                    setState(() {});
+                                    focusNode.requestFocus();
+                                  },
+                                  child: Icon(
+                                    CupertinoIcons.search,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
@@ -143,7 +152,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      currentTemp!.max.toString() + "\u00B0",
+                      currentTemp!.current.toString() + "\u00B0",
                       style: const TextStyle(
                           height: 0.1,
                           fontSize: 60,
@@ -180,7 +189,7 @@ class _CurrentWeatherState extends State<CurrentWeather> {
                       ],
                     ),
                     Text(
-                      currentTemp!.min.toString() + "\u00B0",
+                      currentTemp!.current.toString() + "\u00B0",
                       style: const TextStyle(
                           height: 0.1,
                           fontSize: 60,

@@ -30,10 +30,7 @@ class Weather {
       this.location});
 }
 
-//get appid from http://openweathermap.org
 String appId = "da832880dd17e0b758cdbdfe3a03e639";
-//https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&units=metric&appid=$appId
-//https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/cities.json
 
 Future<List> fetchData(String lat, String lon, String city) async {
   var url =

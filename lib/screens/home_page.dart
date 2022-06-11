@@ -1,3 +1,4 @@
+import 'package:animated_background/animated_background.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:weatherapp/model/weather_model.dart';
@@ -20,7 +21,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   getData() async {
     fetchData(lat, lon, city).then((value) {
       currentTemp = value[0];
@@ -40,28 +41,48 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff030317),
+      backgroundColor: const Color(0xff030317),
       body: currentTemp == null
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
-          : Stack(
-              children: [
-                CurrentWeather(getData),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 600,
-                  ),
-                  child: ClipPath(
-                    clipper: WaveClipperOne(reverse: true),
-                    child: Container(
-                      width: double.infinity,
-                      color: Colors.white,
-                      child: SevenDays(sevenDay!),
+          : AnimatedBackground(
+              behaviour: RandomParticleBehaviour(
+                options: ParticleOptions(
+                    spawnMaxRadius: 50,
+                    spawnMinRadius: 10,
+                    particleCount: 60,
+                    spawnMaxSpeed: 50,
+                    spawnMinSpeed: 20,
+                    minOpacity: 0.7,
+                    maxOpacity: 0.9,
+                    spawnOpacity: 0.4,
+                    baseColor: Colors.blue,
+                    image: Image(
+                      image: AssetImage('assets/rainy.png'),
+                    )),
+              ),
+              vsync: this,
+              child: SafeArea(
+                child: Stack(
+                  children: [
+                    CurrentWeather(getData),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 600,
+                      ),
+                      child: ClipPath(
+                        clipper: WaveClipperOne(reverse: true),
+                        child: Container(
+                          width: double.infinity,
+                          color: Colors.white,
+                          child: SevenDays(sevenDay!),
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
     );
   }

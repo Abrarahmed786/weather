@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages, dead_code
+
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -59,7 +61,7 @@ Future<List> fetchData(String lat, String lon, String city) async {
       var hourly = Weather(
           current: temp[i]["temp"]?.round() ?? 0,
           image: findIcon(temp[i]["weather"][0]["main"].toString(), false),
-          time: Duration(hours: hour + i + 1).toString().split(":")[0] + ":00");
+          time: "${Duration(hours: hour + i + 1).toString().split(":")[0]}:00");
       todayWeather.add(hourly);
     }
 
@@ -145,6 +147,7 @@ class CityModel {
   CityModel({this.name, this.lat, this.lon});
 }
 
+// ignore: prefer_typing_uninitialized_variables
 var cityJSON;
 
 Future<CityModel?> fetchCity(String cityName) async {

@@ -34,7 +34,7 @@ class SevenDays extends StatelessWidget {
                             const SizedBox(width: 15),
                             Text(
                               sevenDay[index].name.toString(),
-                              style: const TextStyle(fontSize: 20),
+                              style: const TextStyle(fontSize: 18),
                             )
                           ],
                         ),

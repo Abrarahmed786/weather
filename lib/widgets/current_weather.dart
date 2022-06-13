@@ -152,7 +152,7 @@ class _CurrentWeatherState extends State<CurrentWeather>
                   "${currentTemp!.current}\u00B0",
                   style: TextStyle(
                       height: 0.1,
-                      fontSize: MediaQuery.of(context).size.width * 0.15,
+                      fontSize: 20,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
@@ -163,7 +163,7 @@ class _CurrentWeatherState extends State<CurrentWeather>
                       "${currentTemp!.current}\u00B0",
                       style: TextStyle(
                           height: 0.1,
-                          fontSize: MediaQuery.of(context).size.width * 0.3,
+                          fontSize: 60,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
@@ -189,7 +189,7 @@ class _CurrentWeatherState extends State<CurrentWeather>
                   "${currentTemp!.current}\u00B0",
                   style: TextStyle(
                       height: 0.1,
-                      fontSize: MediaQuery.of(context).size.width * 0.15,
+                      fontSize: 20,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),

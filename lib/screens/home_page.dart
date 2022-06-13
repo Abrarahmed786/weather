@@ -47,22 +47,27 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               child: CircularProgressIndicator(),
             )
           : AnimatedBackground(
-              behaviour: RandomParticleBehaviour(
-                options: ParticleOptions(
-                    spawnMaxRadius: 50,
-                    spawnMinRadius: 10,
-                    particleCount: 60,
-                    spawnMaxSpeed: 50,
-                    spawnMinSpeed: 20,
-                    minOpacity: 0.7,
-                    maxOpacity: 0.9,
-                    spawnOpacity: 0.4,
-                    baseColor: Colors.blue,
-                    image: Image(
-                      image: AssetImage('assets/rainy.png'),
-                    )),
+              behaviour: RacingLinesBehaviour(
+                direction: LineDirection.Ttb,
+                numLines: 130,
               ),
               vsync: this,
+              // RandomParticleBehaviour(
+              //   options: const ParticleOptions(
+              //       spawnMaxRadius: 50,
+              //       spawnMinRadius: 10,
+              //       particleCount: 60,
+              //       spawnMaxSpeed: 50,
+              //       spawnMinSpeed: 20,
+              //       minOpacity: 0.7,
+              //       maxOpacity: 0.9,
+              //       spawnOpacity: 0.4,
+              //       baseColor: Colors.blue,
+              //       image: Image(
+              //         image: AssetImage('assets/rainy.png'),
+              //       )),
+              // ),
+              // vsync: this,
               child: SafeArea(
                 child: Stack(
                   children: [

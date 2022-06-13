@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             )
           : AnimatedBackground(
               behaviour: RacingLinesBehaviour(
-                direction: LineDirection.Ttb,
+                direction: LineDirection.Ltr,
                 numLines: 130,
               ),
               vsync: this,
